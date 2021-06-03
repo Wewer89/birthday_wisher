@@ -7,21 +7,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pl.mwewerek.locators.Locators;
+import pl.mwewerek.Base.Base;
+import pl.mwewerek.resources.Locators;
+import pl.mwewerek.resources.UserMessages;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BirthdayWisher {
-
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+public class BirthdayWisher extends Base {
 
     public static void makeBirthdayWishes() {
         int numberOfFieldsToInputWishes = countBirthdayWishesFields();
         List<WebElement> linksWithNames = fetchLinksContainNames();
-        String birthdayWishes = "Wszystkiego najlepszego z okazji urodzin ";
+        String birthdayWishes = UserMessages.BIRTHDAY_WISHES;
         int indexOfFieldToInputWishes = 1;
         for (int linkIndex = 0; linkIndex < numberOfFieldsToInputWishes; linkIndex++) {
             String indexConvertedToString = String.valueOf(indexOfFieldToInputWishes);
@@ -42,8 +41,8 @@ public class BirthdayWisher {
     }
 
     private static int  countBirthdayWishesFields() {
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy
-                (By.xpath(Locators.INPUT_BIRTHDAY_WISHES))).size();
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(Locators.INPUT_BIRTHDAY_WISHES))).
+                size();
     }
 
     private static List<WebElement> fetchLinksContainNames() {

@@ -1,4 +1,4 @@
-package pl.mwewerek.credentials;
+package pl.mwewerek.resources;
 
 public class Credentials {
 

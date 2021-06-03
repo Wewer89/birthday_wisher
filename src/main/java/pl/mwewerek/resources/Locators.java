@@ -1,4 +1,4 @@
-package pl.mwewerek.locators;
+package pl.mwewerek.resources;
 
 public class Locators {
 
